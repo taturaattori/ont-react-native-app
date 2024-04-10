@@ -12,7 +12,7 @@ interface TaskListProps {
   setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
 }
 
-const TaskList = ({tasks, setTasks}: TaskListProps) => {
+const TaskList: React.FC<TaskListProps> = ({tasks, setTasks}) => {
   const toggleTaskStatus = (index: number) => {
     const updatedTasks = [...tasks];
     updatedTasks[index].status = !updatedTasks[index].status;
