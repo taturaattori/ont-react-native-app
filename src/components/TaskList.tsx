@@ -30,7 +30,6 @@ const TaskList: React.FC<TaskListProps> = ({tasks, setTasks}) => {
         renderItem={({item, index}) => (
           <View style={styles.listRow}>
             <View style={styles.listItem}>
-              <Text style={styles.itemName}>{item.name}</Text>
               <TouchableOpacity onPress={() => toggleTaskStatus(index)}>
                 <Icon
                   name={item.status ? 'checkbox-active' : 'checkbox-passive'}
@@ -38,10 +37,11 @@ const TaskList: React.FC<TaskListProps> = ({tasks, setTasks}) => {
                   color={'black'}
                 />
               </TouchableOpacity>
+              <Text style={styles.itemName}>{item.name}</Text>
             </View>
             <View>
               <TouchableOpacity onPress={() => handleDelete(index)}>
-                <Text style={styles.deleteButton}>DELETE</Text>
+                <Icon name="trash" size={25} color={'black'} />
               </TouchableOpacity>
             </View>
           </View>
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: 'black',
     marginRight: 10,
+    marginLeft: 15,
   },
   deleteButton: {
     color: 'black',

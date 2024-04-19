@@ -1,5 +1,13 @@
 import React, {useState} from 'react';
-import {Button, Modal, StyleSheet, TextInput, View} from 'react-native';
+import {
+  Button,
+  Modal,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export interface Task {
   name: string;
@@ -16,7 +24,7 @@ const AddTask: React.FC<AddTaskProps> = ({onAddTask}) => {
 
   const addTask = () => {
     if (task.trim() !== '') {
-      const newTask: Task = {name: '- ' + task, status: false};
+      const newTask: Task = {name: task, status: false};
       onAddTask(newTask);
       setTask('');
       setModalVisible(false); // Close the modal after adding task
@@ -46,8 +54,12 @@ const AddTask: React.FC<AddTaskProps> = ({onAddTask}) => {
           </View>
         </View>
       </Modal>
-      <View style={styles.button}>
-        <Button title="Add a task" onPress={() => setModalVisible(true)} />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          onPress={() => setModalVisible(true)}
+          style={styles.button}>
+          <Text style={{color: 'black'}}>Add a task</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -72,7 +84,14 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   button: {
-    padding: 20,
+    padding: 10,
+    backgroundColor: '#9DEADC',
+    borderRadius: 10,
+    width: 100,
+    alignItems: 'center',
+  },
+  buttonContainer: {
+    padding: 15,
   },
   buttonView: {
     flexDirection: 'row',

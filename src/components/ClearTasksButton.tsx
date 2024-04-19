@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 interface Props {
   onClearTasks: () => void;
@@ -11,15 +11,24 @@ const ClearTasks: React.FC<Props> = ({onClearTasks}) => {
   };
 
   return (
-    <View style={styles.button}>
-      <Button title="Clear all" onPress={handleClearTasks} />
+    <View style={styles.container}>
+      <TouchableOpacity onPress={handleClearTasks} style={styles.button}>
+        <Text style={{color: 'black'}}>Clear all</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    padding: 20,
+    padding: 10,
+    backgroundColor: '#9DEADC',
+    borderRadius: 10,
+    width: 100,
+    alignItems: 'center',
+  },
+  container: {
+    padding: 15,
   },
 });
 
