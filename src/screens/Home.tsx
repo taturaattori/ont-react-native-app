@@ -5,7 +5,13 @@ import TaskList from '../components/TaskList';
 import ClearTasks from '../components/ClearTasksButton';
 
 const Home = () => {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([
+    {name: 'Siivous', status: false},
+    {name: 'Treeni', status: false},
+    {name: 'Kauppa', status: true},
+    {name: 'Opiskelu', status: false},
+    {name: 'Roskat', status: true},
+  ]);
 
   const addTask = (newTask: Task) => {
     setTasks([...tasks, newTask]);
